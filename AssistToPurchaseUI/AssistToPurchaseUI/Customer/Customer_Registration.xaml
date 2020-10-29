@@ -43,7 +43,7 @@
                     <GradientStop Color="White" Offset="0.50"></GradientStop>
                 </LinearGradientBrush>
             </Border.Background>
-            <Button x:Name="BackButton" Content="Back" Width="50" FontSize="15" HorizontalAlignment="Right" FontWeight="DemiBold">
+            <Button x:Name="BackButton" Content="Back" Width="50" FontSize="15" HorizontalAlignment="Right" FontWeight="DemiBold" Click="Back_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <TextBlock>  

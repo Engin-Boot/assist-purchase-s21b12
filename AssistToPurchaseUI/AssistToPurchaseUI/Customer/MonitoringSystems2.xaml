@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Grid.Children>
 
-            <Border Background="LightPink">
+            <Border Background="White">
                 <Button Grid.Row="0" Content="HOME" Width="50" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,5,5" Cursor="Hand" Click="Home_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
@@ -38,8 +38,8 @@
             <Border Margin="1,30,1,0" Height="480">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                        <GradientStop Color="SkyBlue" Offset="0.0"></GradientStop>
-                        <GradientStop Color="LightPink" Offset="0.50"></GradientStop>
+                        <GradientStop Color="White" Offset="0.0"></GradientStop>
+                        <GradientStop Color="SkyBlue" Offset="0.50"></GradientStop>
                     </LinearGradientBrush>
                 </Border.Background>
                 <Grid>
@@ -55,10 +55,14 @@
                     <Grid.Children>
 
                         <DataGrid x:Name="DataGrid2" Grid.Row="0" Grid.Column="1" AutoGenerateColumns ="False" AlternatingRowBackground="SkyBlue"
-                                    HorizontalAlignment="Left" Height="200" Margin="140.667,62,-25.667,0" VerticalAlignment="Top" Width="273" Grid.RowSpan="2">
+                                    HorizontalAlignment="Left" Height="200" Margin="116,61,-0.333,0" VerticalAlignment="Top" Width="283" Grid.RowSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ProductNumber" Binding="{Binding ProductNumber}" />
                                 <DataGridTextColumn Header="ProductName" Binding="{Binding ProductName}" />
+                                <DataGridTextColumn Header="Cost" Binding="{Binding Cost}" />
+                                <DataGridTextColumn Header="ScreenSize" Binding="{Binding ScreenSize}" />
+
+
 
                             </DataGrid.Columns>
                         </DataGrid>
@@ -67,12 +71,11 @@
                         <TextBlock Grid.Column="0" TextWrapping="Wrap" Margin="27,91,192.667,109.667" FontWeight="DemiBold" Width="110" Height="50" Text="Screen Size (Enter only one value ex- 5,10) :"></TextBlock>
                         <TextBlock Grid.Column="0" Margin="21,200,196,141" TextWrapping="Wrap" FontWeight="DemiBold" Height="50" Width="120" Grid.RowSpan="2">Product Cost (Enter only one value ex 20000):</TextBlock>
 
-                        <TextBox x:Name="BelowScreenSize" Grid.Column="0" Margin="141,90,92.333,111.333" Width="100" Height="30"  />
-                        <TextBox x:Name="AboveScreenSize" Grid.Column="0" Margin="267,98,0.333,119.333" Width="100" Height="30" />
-                        <TextBox x:Name="AbovePrice" Grid.Column="0" Margin="276,218,382,0.667" Width="100" Height="30" Grid.ColumnSpan="2" />
-                        <TextBox x:Name="BelowPrice" Grid.Column="0" Margin="159,218,109.667,0" Width="100" Height="30" />
+                        <TextBox x:Name="ScreenSize" Grid.Column="0" Margin="191,98,79.667,123.333" Width="100" Height="30"  />
+                        <TextBox x:Name="Price" Grid.Column="0" Margin="192,227,80,165" Width="100" Height="30" Grid.RowSpan="2" />
 
-                        <Button x:Name="GetScrSizeAndCost" Content="Filter"  Grid.Column="0" Style="{StaticResource ResourceKey=ButtonStyle}" Margin="209,20.667,61,110" Click="ScrCost_Click" Grid.Row="1"/>
+                        <Button x:Name="GetScrSizeAndCost" Content="BelowP"  Grid.Column="0" Height="30" Width="50" Margin="173,26,148.333,113.333" Click="BelowPrice_Click" Grid.Row="1"/>
+                        <Button x:Name="AbovePrice" Content="AboveP"  Grid.Column="0" Height="30" Width="50" Margin="249,27,74.333,114.333" Click="AbovePrice_Click" Grid.Row="1"/>
                         <TextBlock Grid.Column="0" HorizontalAlignment="Left" FontStyle="Italic" FontWeight="DemiBold" Margin="21,25,0,0" TextAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" Width="304" Height="33">
                             Want to get More detailed List of Products then you can choose below options.
                         </TextBlock>
@@ -88,12 +91,12 @@
                                   Text="{Binding GetScrSizeAndCost}" FontWeight="DemiBold" Visibility="Hidden" VerticalAlignment="Top" Height="78" Width="391" Grid.ColumnSpan="2">
                             Get your desired product ? Want to deliver at your doorstep ? Then you are just one step away. Connect with us by pressing Contact Us =>
                         </TextBlock>
-                        <TextBlock HorizontalAlignment="Left" Margin="161,77,0,0" TextWrapping="Wrap" Text="BelowScreenSize" VerticalAlignment="Top"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="276,74,0,0" TextWrapping="Wrap" Text="AboveScreenSize" VerticalAlignment="Top"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="173,195,0,0" TextWrapping="Wrap" Text="BelowCost" VerticalAlignment="Top"/>
-                        <TextBlock HorizontalAlignment="Left" Margin="287,195,0,0" TextWrapping="Wrap" Text="AboveCost" VerticalAlignment="Top"/>
-                        <Button Content="Filter" HorizontalAlignment="Left" Margin="209,150,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=ButtonStyle}"
-                                Click="ScreenFilter_Click"></Button>
+                        <TextBlock HorizontalAlignment="Left" Margin="210,79,0,0" TextWrapping="Wrap" Text="Screen Size" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="224,203,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top"/>
+                        <Button Content="Below" HorizontalAlignment="Left" Margin="178,147,0,0" VerticalAlignment="Top" 
+                                Height="30" Width="50" Click="BelowScreenSize_Click"></Button>
+                        <Button Content="Above" HorizontalAlignment="Left" Margin="249,147,0,0" VerticalAlignment="Top"
+                                Height="30" Width="50" Click="AboveScreenSize_Click"/>
                     </Grid.Children>
                 </Grid>
             </Border>

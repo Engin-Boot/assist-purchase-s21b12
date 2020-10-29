@@ -10,8 +10,10 @@ namespace AssistToPurchaseUI.Models
     {
         public string ProductNumber { get; set; } //ReSharper disable all
         public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
         public string Compact { get; set; }
         public string Connectivity { get; set; }
         public string TouchScreen { get; set; }
+        public string WearableMonitor { get; set; }
     }
 }

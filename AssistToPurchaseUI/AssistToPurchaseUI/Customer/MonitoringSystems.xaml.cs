@@ -34,7 +34,7 @@ namespace AssistToPurchaseUI.Customer
         {
             //MonitoringProducts _Model = new MonitoringProducts();
             HttpClient client = new HttpClient();
-            string apiUrl = ConfigurationManager.AppSettings["MailApi"] + "ClientQuestions/MonitoringProducts";
+            string apiUrl = ConfigurationManager.AppSettings["MailApi"] + "MonitoringProduct/all";
             client.BaseAddress = new Uri(apiUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -68,7 +68,8 @@ namespace AssistToPurchaseUI.Customer
                 {
                     //ProductDataGrid.Items.Add(item.ProductNumber);
                     //ProductDataGrid.Items.Add(item.ProductName);
-                    _ProductList.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName , TouchScreen = item.TouchScreen, Connectivity = item.ConnectivitySupport, Compact = item.Compact});
+                    _ProductList.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName,
+                        WearableMonitor = item.WearableMonitor, TouchScreen = item.TouchScreen, Connectivity = item.ConnectivitySupport, Compact = item.Compact});
                 }
                 ProductDataGrid.ItemsSource = _ProductList;
             }
@@ -98,7 +99,7 @@ namespace AssistToPurchaseUI.Customer
         private async void ApplyFilters_Click(object sender, RoutedEventArgs e)
         {
             HttpClient client = new HttpClient();
-            string apiUrl = ConfigurationManager.AppSettings["MailApi"] + "ClientQuestions/MonitoringProducts";
+            string apiUrl = ConfigurationManager.AppSettings["MailApi"] + "MonitoringProduct/all";
             client.BaseAddress = new Uri(apiUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -124,8 +125,9 @@ namespace AssistToPurchaseUI.Customer
                     bool conditionTwo = helper(item.Compact, compact, item.ConnectivitySupport, connectivity);
                     bool final = conditionOne & conditionTwo;
                     if (final)
-                        _ProductList.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName, TouchScreen = item.TouchScreen, 
-                            Connectivity = item.ConnectivitySupport, Compact = item.Compact });
+                        _ProductList.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName,
+                            WearableMonitor = item.WearableMonitor , TouchScreen = item.TouchScreen, 
+                            Connectivity = item.ConnectivitySupport, Compact = item.Compact});
                 }
                 ProductDataGrid.ItemsSource = _ProductList;
             }
@@ -145,6 +147,13 @@ namespace AssistToPurchaseUI.Customer
         bool helper(string str1, string str2, string str3, string str4)
         {
             return str1 == str2 && str3 == str4;
+        }
+
+        private void GetMore_Click(object sender, RoutedEventArgs e)
+        {
+            MonitoringSystems2 _Monitor = new MonitoringSystems2();
+            _Monitor.Show();
+            Close();
         }
     }
 }

@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Admin\AdminGetResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin\AdminLoginModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +131,9 @@
     </Page>
     <Compile Include="Admin\AdminAddService.xaml.cs">
       <DependentUpon>AdminAddService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AdminGetResult.xaml.cs">
+      <DependentUpon>AdminGetResult.xaml</DependentUpon>
     </Compile>
     <Compile Include="Admin\AdminLoginModel.xaml.cs">
       <DependentUpon>AdminLoginModel.xaml</DependentUpon>

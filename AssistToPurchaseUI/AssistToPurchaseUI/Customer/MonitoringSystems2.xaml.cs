@@ -30,26 +30,17 @@ namespace AssistToPurchaseUI.Customer
             InitializeComponent();
         }
 
-        private async void ScrCost_Click(object sender, RoutedEventArgs e)
+        private void BelowPrice_Click(object sender, RoutedEventArgs e)
         {
-
-            HttpClient client = new HttpClient();
 
             string CostPropertyValue;
             string CostValue;
             //BelowPrice.Text = "";
             //AbovePrice.Text = "";
-            if (BelowPrice.Text != null)
-            {
-                CostPropertyValue = "BelowPrice";
-                CostValue = BelowPrice.Text;
-            }
-            else
-            {
-                CostPropertyValue = "AbovePrice";
-                CostValue = AbovePrice.Text;
-            }
-
+            CostPropertyValue = "BelowPrice";
+            CostValue = Price.Text;
+            ScreenCostFilter(CostPropertyValue, CostValue);
+            /*
             var Url = "ClientQuestions/MonitoringProducts/" + CostPropertyValue + "/" + CostValue;
             string apiUrl = ConfigurationManager.AppSettings["MailApi"] + Url;
             //string apiUrl = ConfigurationManager.AppSettings["MailApi"] + "ClientQuestions/MonitoringProducts/TouchScreen/YES";
@@ -69,52 +60,56 @@ namespace AssistToPurchaseUI.Customer
 
                 foreach (var item in deserialized)
                 {
-                    _ListModel.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName });
+                    _ListModel.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName,
+                    Cost = item.Cost, ScreenSize = item.ScreenSize});
                 }
                 DataGrid2.ItemsSource = _ListModel;
             }
             else
             {
                 MessageBox.Show("Unable to get details");
-            }
+            } */
+
             ContactUstext.Visibility = Visibility.Visible;
-            BelowPrice.Text = "";
-            AbovePrice.Text = "";
-            //CostPropertyValue = "";
-            //CostValue = "";
+
         }
 
-        private void Contactus_Click(object sender, RoutedEventArgs e)
+        private void AbovePrice_Click(object sender, RoutedEventArgs e)
         {
-            Customer_Registration _Registration = new Customer_Registration();
-            _Registration.Show();
-            Close();
-        }
+            string PropertyValue;
+            string Value;
+            PropertyValue = "AbovePrice";
+            Value = Price.Text;
+            ScreenCostFilter(PropertyValue, Value);
 
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            WelcomePortal _Welcome = new WelcomePortal();
-            _Welcome.Show();
-            Close();
-        }
+            ContactUstext.Visibility = Visibility.Visible;
+            //Price.Text = "";
+            //Price.Text = "";
 
-        private async void ScreenFilter_Click(object sender, RoutedEventArgs e)
+        }
+        private void BelowScreenSize_Click(object sender, RoutedEventArgs e)
         {
-            HttpClient client = new HttpClient();
 
             string PropertyValue;
             string Value;
-            if(BelowScreenSize.Text != null)
-            {
-                PropertyValue = "BelowScreenSize";
-                Value = BelowScreenSize.Text;
-            }
-            else
-            {
-                PropertyValue = "AboveScreenSize";
-                Value = AboveScreenSize.Text;
-            }
+            PropertyValue = "BelowScreenSize";
+            Value = ScreenSize.Text;
+            ScreenCostFilter(PropertyValue, Value);
+        }
 
+        private void AboveScreenSize_Click(object sender, RoutedEventArgs e)
+        {
+            string PropertyValue;
+            string Value;
+
+            PropertyValue = "AboveScreenSize";
+            Value = ScreenSize.Text;
+            ScreenCostFilter(PropertyValue, Value);
+        }
+
+        private async void ScreenCostFilter(string PropertyValue, string Value)
+        {
+            HttpClient client = new HttpClient();
             var Url = "ClientQuestions/MonitoringProducts/" + PropertyValue + "/" + Value;
             string apiUrl = ConfigurationManager.AppSettings["MailApi"] + Url;
             //string apiUrl = ConfigurationManager.AppSettings["MailApi"] + "ClientQuestions/MonitoringProducts/TouchScreen/YES";
@@ -129,11 +124,17 @@ namespace AssistToPurchaseUI.Customer
 
                 var customerJsonString = await response.Content.ReadAsStringAsync();
                 var deserialized = JsonConvert.DeserializeObject<IEnumerable<MonitoringProducts>>(custome‌​rJsonString);
-                List<ProductSample> _ModelList = new List<ProductSample>();
+                List<MonitoringProducts> _ModelList = new List<MonitoringProducts>();
 
                 foreach (var item in deserialized)
                 {
-                    _ModelList.Add(new ProductSample() { ProductNumber = item.ProductNumber, ProductName = item.ProductName });
+                    _ModelList.Add(new MonitoringProducts()
+                    {
+                        ProductNumber = item.ProductNumber,
+                        ProductName = item.ProductName,
+                        Cost = item.Cost,
+                        ScreenSize = item.ScreenSize
+                    });
                 }
                 DataGrid2.ItemsSource = _ModelList;
             }
@@ -141,6 +142,20 @@ namespace AssistToPurchaseUI.Customer
             {
                 MessageBox.Show("Unable to get details");
             }
+        }
+
+        private void Contactus_Click(object sender, RoutedEventArgs e)
+        {
+            Customer_Registration _Registration = new Customer_Registration();
+            _Registration.Show();
+            Close();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            WelcomePortal _Welcome = new WelcomePortal();
+            _Welcome.Show();
+            Close();
         }
     }
 }

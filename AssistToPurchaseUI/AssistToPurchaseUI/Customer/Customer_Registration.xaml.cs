@@ -81,5 +81,12 @@ namespace AssistToPurchaseUI.Customer
         {
             Close();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerSelection _Select = new CustomerSelection();
+            _Select.Show();
+            Close();
+        }
     }
 }

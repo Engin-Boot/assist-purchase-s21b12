@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace AssistToPurchaseUI.Admin
 {
@@ -36,6 +37,13 @@ namespace AssistToPurchaseUI.Admin
         {
             WelcomePortal _Welcome = new WelcomePortal();
             _Welcome.Show();
+            Close();
+        }
+
+        private void GetProduct_Click(object sender, RoutedEventArgs e)
+        {
+            AdminGetResult _Get = new AdminGetResult();
+            _Get.Show();
             Close();
         }
     }
