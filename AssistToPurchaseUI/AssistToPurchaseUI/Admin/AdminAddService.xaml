@@ -1,0 +1,102 @@
+﻿<Window x:Class="AssistToPurchaseUI.Admin.AdminAddService"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssistToPurchaseUI.Admin"
+        mc:Ignorable="d"
+        Title="AdminAddService" Height="650" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Height="20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="White" Offset="0.0"></GradientStop>
+                    <GradientStop Color="White" Offset="0.50"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Button x:Name="Home" Content="Home" Width="60" FontSize="15" HorizontalAlignment="Left" FontWeight="DemiBold" Click="Home_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock>  
+                <ContentPresenter />
+                        </TextBlock>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" Height="20" >
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="White" Offset="0.0"></GradientStop>
+                    <GradientStop Color="White" Offset="0.50"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Button x:Name="BackButton" Content="Back" Width="50" FontSize="15" HorizontalAlignment="Right" FontWeight="DemiBold" Click="Selection_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock>  
+                <ContentPresenter />
+                        </TextBlock>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Border>
+        <Border Height="90" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="790">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="WhiteSmoke" Offset="0.0"></GradientStop>
+                    <GradientStop Color="LightBlue" Offset="0.50"></GradientStop>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock x:Name="Heading1" FontSize="28" Foreground="Blue" TextAlignment="Center" VerticalAlignment="Center"
+                           FontWeight="Bold">Add Product to the Catalog</TextBlock>
+        </Border>
+        <TextBlock Grid.Row="3" Height="20" HorizontalAlignment="Left" Margin="200,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,20,0,0" Name="ProductNumber" Text="Product Number" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,50,0,0" Name="ProductName" Text="Product Name" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,80,0,0" Name="ProductDescription" Text="ProductDescription" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,110,0,0" Name="TouchScreen" Text="TouchScreen" VerticalAlignment="Top" Width="110"  />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,140,0,0" Name="WearableMonitor" Text="WearableMonitor" VerticalAlignment="Top" Width="110" Grid.RowSpan="2" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,170,0,0" Name="AlarmManagement" Text="AlarmManagement" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,200,0,0" Name="Cost" Text="Cost" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,230,0,0" Name="ScreenSize" Text="ScreenSize" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,260,0,0" Name="ConnectivitySupport" Text="ConnectivitySupport" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,290,0,0" Name="SummarizeDataSupport" Text="SummarizeDataSupport" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,320,0,0" Name="ScalableMeasurement" Text="ScalableMeasurement" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="200,350,0,0" Name="Compact" Text="Compact" VerticalAlignment="Top" Width="110" />
+
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,20,0,0" Name="ProductNumberTextBox" VerticalAlignment="Top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,50,0,0" Name="ProductNameTextBox" VerticalAlignment="Top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,80,0,0" Name="ProductDescriptionTextBox" VerticalAlignment="Top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,110,0,0" Name="TouchScreenTextBox" VerticalAlignment="Top" Width="222" />
+
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,140,0,0" Name="WearableMonitorTextBox" VerticalAlignment="Top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,170,0,66" Name="AlarmManagementTextBox" VerticalAlignment="top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,200,0,66" Name="CostTextBox" VerticalAlignment="top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,230,0,66" Name="ScreenSizeTextBox" VerticalAlignment="top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,260,0,66" Name="ConnectivitySupportTextBox" VerticalAlignment="top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,290,0,66" Name="SummarizeDataSupportTextBox" VerticalAlignment="top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,320,0,66" Name="ScalableMeasurementTextBox" VerticalAlignment="top" Width="222" />
+        <TextBox Grid.Row="3" Height="23" HorizontalAlignment="Left" Margin="360,350,0,66" Name="CompactTextBox" VerticalAlignment="top" Width="222" />
+
+
+        <Button Grid.Row="3" Content="Add" Height="23" HorizontalAlignment="Left" Margin="250,400,0,0" Name="Submit" VerticalAlignment="Top" Width="70" Click="Submit_Click" RenderTransformOrigin="0.486,6.29" />
+        <Button Grid.Row="3" Content="Reset" Height="23" HorizontalAlignment="Left" Margin="350,400,0,0" Name="button2" VerticalAlignment="Top" Width="70" Click="Reset_Click" />
+        <Button Grid.Row="3" Content="Cancel" Height="23" HorizontalAlignment="Right" Margin="400 400 180 50" Name="button3" VerticalAlignment="Top" Width="70" Click="Cancel_Click" />
+    </Grid>
+
+</Window>
